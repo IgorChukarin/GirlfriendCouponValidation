@@ -9,7 +9,7 @@ public class Coupon {
     @Id
     private int id;
     private String description;
-    private boolean used;
+    private boolean relevant;
 
     public int getId() {
         return id;
@@ -27,11 +27,11 @@ public class Coupon {
         this.description = description;
     }
 
-    public boolean isUsed() {
-        return used;
+    public boolean isRelevant() {
+        return relevant;
     }
 
-    public void setUsed(boolean used) {
-        this.used = used;
+    public void setRelevant(boolean relevant) {
+        this.relevant = relevant;
     }
 }

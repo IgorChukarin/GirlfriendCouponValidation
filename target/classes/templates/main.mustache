@@ -6,8 +6,13 @@
 </head>
 <body>
     <form method="post" action="createCoupon">
-        <input type="submit"/>
-        <p>{{message}}</p>
+        <input type="text" name="description" placeholder="Enter description"/>
+        <input type="submit" value="Создать"/>
     </form>
+    <form method="post" action="activateCoupon">
+        <input type="text" minlength="6" maxlength="6" name="code" placeholder="Enter code"/>
+        <input type="submit" value="Активировать"/>
+    </form>
+    {{message}}
 </body>
 </html>
