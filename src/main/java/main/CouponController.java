@@ -23,7 +23,7 @@ public class CouponController {
         coupon.setDescription(description);
         coupon.setRelevant(true);
         couponRepository.save(coupon);
-        model.put("message", "coupon created =)");
+        model.put("message", "Новый купон с номером " + id + " создан =)");
         return "main";
     }
 
