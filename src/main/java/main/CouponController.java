@@ -3,6 +3,7 @@ import main.model.Coupon;
 import main.model.CouponRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import java.util.ArrayList;
@@ -15,6 +16,11 @@ public class CouponController {
     @Autowired
     CouponRepository couponRepository;
 
+    @GetMapping("/dataBase")
+    public String couponsBase(Map<String, Object> model) {
+        return "dataBase";
+    }
+
     @PostMapping("createCoupon")
     public String createCoupon(@RequestParam String description, Map<String, String> model) {
         Coupon coupon = new Coupon();
@@ -23,6 +29,13 @@ public class CouponController {
         coupon.setDescription(description);
         coupon.setRelevant(true);
         couponRepository.save(coupon);
+        Statistics statistics = new Statistics();
+        String used = String.valueOf(statistics.countUsedCoupons(couponRepository));
+        String unused = String.valueOf(statistics.countUnusedCoupons(couponRepository));
+        String total = String.valueOf(statistics.countTotalAmount(couponRepository));
+        model.put("used", used);
+        model.put("unused", unused);
+        model.put("total", total);
         model.put("message", "Новый купон с номером " + id + " создан =)");
         return "main";
     }
@@ -59,6 +72,13 @@ public class CouponController {
         else {
             model.put("message", "купон не существует");
         }
+        Statistics statistics = new Statistics();
+        String used = String.valueOf(statistics.countUsedCoupons(couponRepository));
+        String unused = String.valueOf(statistics.countUnusedCoupons(couponRepository));
+        String total = String.valueOf(statistics.countTotalAmount(couponRepository));
+        model.put("used", used);
+        model.put("unused", unused);
+        model.put("total", total);
         return "main";
     }
 }
