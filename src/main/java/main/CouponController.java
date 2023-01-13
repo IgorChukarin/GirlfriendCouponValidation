@@ -23,21 +23,20 @@ public class CouponController {
 
     @PostMapping("createCoupon")
     public String createCoupon(@RequestParam String description, Map<String, String> model) {
+        Coupon coupon = setCouponParameters(description);
+        couponRepository.save(coupon);
+        displayStatistics(model);
+        model.put("message", "New coupon №" + coupon.getId() + " has been created!");
+        return "main";
+    }
+
+    public Coupon setCouponParameters(String description) {
         Coupon coupon = new Coupon();
         int id = getRandomNumber();
         coupon.setId(id);
         coupon.setDescription(description);
         coupon.setRelevant(true);
-        couponRepository.save(coupon);
-        Statistics statistics = new Statistics();
-        String used = String.valueOf(statistics.countUsedCoupons(couponRepository));
-        String unused = String.valueOf(statistics.countUnusedCoupons(couponRepository));
-        String total = String.valueOf(statistics.countTotalAmount(couponRepository));
-        model.put("used", used);
-        model.put("unused", unused);
-        model.put("total", total);
-        model.put("message", "Новый купон с номером " + id + " создан =)");
-        return "main";
+        return coupon;
     }
 
     public int getRandomNumber() {
@@ -72,6 +71,11 @@ public class CouponController {
         else {
             model.put("message", "купон не существует");
         }
+        displayStatistics(model);
+        return "main";
+    }
+
+    public void displayStatistics(Map<String, String> model){
         Statistics statistics = new Statistics();
         String used = String.valueOf(statistics.countUsedCoupons(couponRepository));
         String unused = String.valueOf(statistics.countUnusedCoupons(couponRepository));
@@ -79,6 +83,5 @@ public class CouponController {
         model.put("used", used);
         model.put("unused", unused);
         model.put("total", total);
-        return "main";
     }
 }

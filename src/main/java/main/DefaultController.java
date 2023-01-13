@@ -24,4 +24,5 @@ public class DefaultController {
         model.put("message", "hello");
         return "main";
     }
+
 }
