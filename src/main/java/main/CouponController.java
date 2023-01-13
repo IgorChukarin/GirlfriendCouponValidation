@@ -6,6 +6,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Map;
 import java.util.Optional;
@@ -27,19 +29,24 @@ public class CouponController {
         couponRepository.save(coupon);
         displayStatistics(model);
         model.put("message", "New coupon №" + coupon.getId() + " has been created!");
+        try {
+            CouponImageCreator.addTextInImage(String.valueOf(coupon.getId()), "png");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         return "main";
     }
 
     public Coupon setCouponParameters(String description) {
         Coupon coupon = new Coupon();
-        int id = getRandomNumber();
+        int id = getUniqueRandomNumber();
         coupon.setId(id);
         coupon.setDescription(description);
         coupon.setRelevant(true);
         return coupon;
     }
 
-    public int getRandomNumber() {
+    public int getUniqueRandomNumber() {
         int randomCode = ((int) ((Math.random()) * (999_999 - 100_000)) + 100_000);
         ArrayList<Integer> ids = new ArrayList<>();
         Iterable<Coupon> coupons = couponRepository.findAll();
@@ -47,7 +54,7 @@ public class CouponController {
             ids.add(coupon.getId());
         }
         if (ids.contains(randomCode)) {
-            return getRandomNumber();
+            return getUniqueRandomNumber();
         }
         else {
             return randomCode;

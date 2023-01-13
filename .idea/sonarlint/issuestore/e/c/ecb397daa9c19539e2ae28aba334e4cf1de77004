@@ -1,0 +1,23 @@
+
+W
+java:S1075"ARefactor your code to get this URI from a customizable parameter.(œÙÖÕ
+U
+java:S1075"ARefactor your code to get this URI from a customizable parameter.(Üª
+P
+java:S1854#";Remove this useless assignment to local variable "centerY".(¸ùk
+Q
+java:S1854"";Remove this useless assignment to local variable "centerX".(‹Ò–Ú
+\
+java:S1075"ARefactor your code to get this URI from a customizable parameter.(ããÒ‰úÿÿÿÿ
+\
+java:S1075"ARefactor your code to get this URI from a customizable parameter.(ÜàßÓúÿÿÿÿ
+B
+java:S1481"",Remove this unused "centerX" local variable.(‹Ò–Ú
+A
+java:S1481#",Remove this unused "centerY" local variable.(¸ùk
+>
+java:S1068"(Remove this unused "text" private field.(ûí“Ÿ
+@
+java:S1068"*Remove this unused "source" private field.(œÙÖÕ
+C
+java:S1068"/Remove this unused "destination" private field.(Üª
