@@ -10,12 +10,10 @@ import java.io.IOException;
 
 public class CouponImageCreator {
     private String text = "HELLO";
-    private File source = new File("C:\\Users\\Zigor\\Desktop\\coupon.png");
-    private File destination = new File("C:\\Users\\Zigor\\Desktop\\imageWithText.png");
 
     public static void addTextInImage(String text, String type) throws IOException {
-        File source = new File("C:\\Users\\Zigor\\Desktop\\coupon.png");
-        File destination = new File("C:\\Users\\Zigor\\Desktop\\imageWithText.png");
+        File source = new File("C:\\Users\\Zigor\\Desktop\\projects\\GirlfriendCouponValidation\\src\\main\\images\\coupon.png");
+        File destination = new File("C:\\Users\\Zigor\\Desktop\\projects\\GirlfriendCouponValidation\\src\\main\\images\\imageWithText.png");
         BufferedImage image = ImageIO.read(source);
         int imageType = "png".equalsIgnoreCase(type) ? BufferedImage.TYPE_INT_ARGB : BufferedImage.TYPE_INT_RGB;
         BufferedImage bold = new BufferedImage(image.getWidth(), image.getHeight(), imageType);

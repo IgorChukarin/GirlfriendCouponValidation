@@ -28,7 +28,8 @@ public class CouponController {
         Coupon coupon = setCouponParameters(description);
         couponRepository.save(coupon);
         displayStatistics(model);
-        model.put("message", "New coupon №" + coupon.getId() + " has been created!");
+        model.put("message", "Купон №" + coupon.getId() + " выписан!");
+        model.put("image", "https://sun9-west.userapi.com/sun9-4/s/v1/ig2/f06sZw_bu8N8zzjFADiIFpT5EOp9WRl63NJcgYYD9PtqWATFYUslqyJ3yE7RnZCosguIWshu5dhvVTWsW6QHPYdL.jpg?size=1170x1166&quality=96&type=album");
         try {
             CouponImageCreator.addTextInImage(String.valueOf(coupon.getId()), "png");
         } catch (IOException e) {
@@ -70,13 +71,18 @@ public class CouponController {
             if (coupon.isRelevant()) {
                 coupon.setRelevant(false);
                 couponRepository.save(coupon);
-                model.put("message", "coupon activated and relevant no more");
+                model.put("message", "Купон акивирован!");
+                model.put("image", "https://sun9-north.userapi.com/sun9-83/s/v1/ig2/XUOo9cBu9e-lJ6ZlxgLUw-ZaQDx8x0Kf2ckAyzztB_c7Ddv9elHFCtWEj3E7UaG3cyQ90EzvFs5WlvuLb4zQf0ej.jpg?size=1170x1170&quality=95&type=album");
+
             } else {
-                model.put("message", "вы уже использовали этот купон >:(");
+                model.put("message", "Этот купон уже использован!");
+                model.put("image", "https://sun9-east.userapi.com/sun9-60/s/v1/ig2/FGiZXxtEIo959GAk4iSRwsG3rucCPYIeS3zEDVrSLPQBLzBjmLx2zhewoRFJfULsToAo4WWtPbLjlP9O9KdqMsa1.jpg?size=1170x1170&quality=95&type=album");
             }
         }
         else {
-            model.put("message", "купон не существует");
+            model.put("message", "*Купон не существует*");
+            model.put("image", "https://sun9-north.userapi.com/sun9-88/s/v1/ig2/ku6qWk6Pqt6XgX_OvbsTXt4c2KJ-T2JXLSJppE6Rb_gJfN2fKOCadmrQ1taVABtySvpMDLi5ejtwZBHDnz--s0jt.jpg?size=1170x1166&quality=95&type=album");
+
         }
         displayStatistics(model);
         return "main";
