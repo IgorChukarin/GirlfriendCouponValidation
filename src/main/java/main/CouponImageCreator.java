@@ -3,42 +3,41 @@ package main;
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.geom.AffineTransform;
-import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
 public class CouponImageCreator {
-    private String text = "HELLO";
+    final static File blankCoupon = new File("C:\\Users\\Zigor\\Desktop\\projects\\GirlfriendCouponValidation\\src\\main\\images\\coupon.png");
+    final static File finalCoupon = new File("C:\\Users\\Zigor\\Desktop\\projects\\GirlfriendCouponValidation\\src\\main\\images\\finalCoupon.png");
+    final static Color codeColor = new Color(238,85,100);
+    final static Font codeFont = new Font(Font.SANS_SERIF, Font.BOLD, 60);
+    final static String type = "png";
 
-    public static void addTextInImage(String text, String type) throws IOException {
-        File source = new File("C:\\Users\\Zigor\\Desktop\\projects\\GirlfriendCouponValidation\\src\\main\\images\\coupon.png");
-        File destination = new File("C:\\Users\\Zigor\\Desktop\\projects\\GirlfriendCouponValidation\\src\\main\\images\\imageWithText.png");
-        BufferedImage image = ImageIO.read(source);
+    public static void addTextInImage(String code, String description) throws IOException {
+        BufferedImage bufferedImage = ImageIO.read(blankCoupon);
         int imageType = "png".equalsIgnoreCase(type) ? BufferedImage.TYPE_INT_ARGB : BufferedImage.TYPE_INT_RGB;
-        BufferedImage bold = new BufferedImage(image.getWidth(), image.getHeight(), imageType);
-        Graphics2D w = (Graphics2D) bold.getGraphics();
-        w.drawImage(image, 1, 2, null);
-        AlphaComposite alpha = AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.9f);
-        w.setComposite(alpha);
-        Color red = new Color(238,85,100);
-        w.setColor(red);
-        w.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 60));
+        BufferedImage bufferedImageWithType = new BufferedImage(bufferedImage.getWidth(), bufferedImage.getHeight(), imageType);
+        Graphics2D graphics2D = (Graphics2D) bufferedImageWithType.getGraphics();
+        graphics2D.drawImage(bufferedImage, 0, 0, null);
 
+        graphics2D.setColor(codeColor);
+        graphics2D.setFont(codeFont);
 
-        FontMetrics fmetrics = w.getFontMetrics();
-        Rectangle2D rect = fmetrics.getStringBounds(text, w);
+        AffineTransform normalTransform = graphics2D.getTransform();
+        AffineTransform rotatedTransform = new AffineTransform();
+        rotatedTransform.rotate(-Math.PI / 2, bufferedImage.getWidth()/2, bufferedImage.getHeight() / 2);
+        graphics2D.transform(rotatedTransform);
+        graphics2D.drawString(code, bufferedImage.getWidth()/2 - 100, bufferedImage.getHeight() / 2 - 170);
 
-        int centerX = (image.getWidth() - (int) rect.getWidth())/2;
-        int centerY = image.getHeight()/2;
+        graphics2D.transform(rotatedTransform);
+        graphics2D.transform(rotatedTransform);
+        graphics2D.transform(rotatedTransform);
+        graphics2D.setColor(Color.BLACK);
+        graphics2D.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 30));
+        graphics2D.drawString(description, bufferedImage.getWidth() / 2 - 80, bufferedImage.getHeight() / 2);
 
-
-        AffineTransform at = new AffineTransform();
-        at.rotate(Math.PI / 2);
-        w.transform(at);
-        w.drawString(text, 150, -40);
-        ImageIO.write(bold, type, destination);
-
-        w.dispose();
+        ImageIO.write(bufferedImageWithType, type, finalCoupon);
+        graphics2D.dispose();
     }
 }

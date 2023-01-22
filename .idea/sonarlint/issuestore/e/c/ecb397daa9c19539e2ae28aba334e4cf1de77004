@@ -1,15 +1,0 @@
-
-P
-java:S1854!";Remove this useless assignment to local variable "centerY".(¸ùk
-Q
-java:S1854 ";Remove this useless assignment to local variable "centerX".(‹Ò–Ú
-^
-java:S1075"ARefactor your code to get this URI from a customizable parameter.(ä¶8ßãÈŸÛ0
-c
-java:S1075"ARefactor your code to get this URI from a customizable parameter.(ı¿’óÿÿÿÿÿ8ûÒ¿ŸÛ0
-B
-java:S1481 ",Remove this unused "centerX" local variable.(‹Ò–Ú
-A
-java:S1481!",Remove this unused "centerY" local variable.(¸ùk
->
-java:S1068"(Remove this unused "text" private field.(ûí“Ÿ

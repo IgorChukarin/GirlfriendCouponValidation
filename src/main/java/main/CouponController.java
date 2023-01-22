@@ -25,13 +25,19 @@ public class CouponController {
 
     @PostMapping("createCoupon")
     public String createCoupon(@RequestParam String description, Map<String, String> model) {
+        if (description.equals("")) {
+            displayStatistics(model);
+            model.put("message", "Описание не заполнено");
+            model.put("image", "https://sun9-north.userapi.com/sun9-79/s/v1/ig2/yixyRxbNXfdBvR7pU3d4Bj77f6hRJQXAozElXxk-EH4FCkFp3QC1u_BNSQVyExHmDPZFyyIcAtyIFGfoYRhJguLA.jpg?size=1170x1170&quality=95&type=album");
+            return "main";
+        }
         Coupon coupon = setCouponParameters(description);
         couponRepository.save(coupon);
         displayStatistics(model);
         model.put("message", "Купон №" + coupon.getId() + " выписан!");
         model.put("image", "https://sun9-west.userapi.com/sun9-4/s/v1/ig2/f06sZw_bu8N8zzjFADiIFpT5EOp9WRl63NJcgYYD9PtqWATFYUslqyJ3yE7RnZCosguIWshu5dhvVTWsW6QHPYdL.jpg?size=1170x1166&quality=96&type=album");
         try {
-            CouponImageCreator.addTextInImage(String.valueOf(coupon.getId()), "png");
+            CouponImageCreator.addTextInImage(String.valueOf(coupon.getId()), description);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -64,6 +70,12 @@ public class CouponController {
 
     @PostMapping("activateCoupon")
     public String activateCoupon(@RequestParam String code, Map<String, String> model) {
+        if (code.equals("") || code.length() != 6) {
+            displayStatistics(model);
+            model.put("message", "Неверный формат кода");
+            model.put("image", "https://sun9-north.userapi.com/sun9-79/s/v1/ig2/yixyRxbNXfdBvR7pU3d4Bj77f6hRJQXAozElXxk-EH4FCkFp3QC1u_BNSQVyExHmDPZFyyIcAtyIFGfoYRhJguLA.jpg?size=1170x1170&quality=95&type=album");
+            return "main";
+        }
         int id = Integer.parseInt(code);
         Optional<Coupon> optionalCoupon = couponRepository.findById(id);
         if (optionalCoupon.isPresent()) {

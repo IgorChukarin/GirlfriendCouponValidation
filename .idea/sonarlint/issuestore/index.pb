@@ -5,15 +5,3 @@
 .src/main/java/main/model/CouponRepository.java,7\2\72a1df9e69a3dd5b9e96df6403418a117284d635
 T
 $src/main/java/main/model/Coupon.java,d\9\d9c8847fe27575323d1901b613dfa2249cf5f3d0
-F
-application.properties,2\f\2f692484526a88bd040e1ec9f8c211bca74f6755
-R
-"src/main/java/main/Statistics.java,d\3\d3d51b6ead36f9f901143146156c494907257765
-S
-#src/main/java/main/Application.java,a\3\a3681cf9c5981d4f42aff4b4f5034889f7c882e2
-Y
-)src/main/java/main/DefaultController.java,6\4\643738326741002ea703815f82a870ebaa7c97ac
-Z
-*src/main/java/main/CouponImageCreator.java,e\c\ecb397daa9c19539e2ae28aba334e4cf1de77004
-X
-(src/main/java/main/CouponController.java,b\7\b78f529ad2e9e72d72ea185e41ad4b34c1fca50f
