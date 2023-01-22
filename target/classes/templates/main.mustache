@@ -29,7 +29,21 @@ input {
 }
 
 .well {
-    border-radius: 8px
+    border: 0px;
+    border-radius: 8px;
+    background-color: #2d325a;
+}
+
+p {
+  color: #ffffff;
+}
+
+h2 {
+  color: #ffffff;
+}
+
+h4 {
+  color: white;
 }
 
 .center {
@@ -43,103 +57,103 @@ input {
 
 <body>
 
-    <nav class="navbar navbar-inverse visible-xs">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand"  href="#">Logo</a>
-            </div>
-            <div class="collapse navbar-collapse" id="myNavbar">
-                <ul class="nav navbar-nav">
-                    <li class="active"><a href="#">Dashboard</a></li>
-                    <li><a href="#">Age</a></li>
-                    <li><a href="#">Gender</a></li>
-                    <li><a href="#">Geo</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-
+<nav class="navbar navbar-inverse visible-xs">
     <div class="container-fluid">
-        <div class="row content">
-            <div class="col-sm-3 sidenav hidden-xs">
-                <h2>Coupon.</h2>
-                <ul class="nav nav-pills nav-stacked">
-                    <li class="active"><a style="background: #B400BD;" href="/">Dashboard</a></li>
-                    <li><a style="color: #B400BD;" href="/dataBase">Coupons base</a></li>
-                </ul><br>
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand"  href="#">Logo</a>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#">Dashboard</a></li>
+                <li><a href="#">Age</a></li>
+                <li><a href="#">Gender</a></li>
+                <li><a href="#">Geo</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container-fluid" style="background-color: #222843">
+    <div class="row content">
+        <div class="col-sm-3 sidenav hidden-xs" style="background-color: #2f356a" >
+            <h2>Coupon.</h2>
+            <ul class="nav nav-pills nav-stacked">
+                <li class="active"><a style="background: #B400BD;" href="/">Dashboard</a></li>
+                <li><a style="color: #B400BD;" href="/dataBase">Coupons base</a></li>
+            </ul><br>
+        </div>
+        <br>
+
+        <div class="col-sm-9">
+            <div class="well">
+                <h4>Dashboard</h4>
+                <p>This is a dashboard where you can create coupons and activate them</p>
             </div>
-            <br>
+            <div class="row">
+                <div class="col-sm-3">
+                    <div class="well">
+                        <h4>Used</h4>
+                        <p>{{used}}</p>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="well">
+                        <h4>Unused</h4>
+                        <p>{{unused}}</p>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="well">
+                        <h4>Total</h4>
+                        <p>{{total}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="well">
+                        <form method="post" action="createCoupon">
+                            <h4>Create coupon</h4>
+                            <input type="text" name="description" placeholder="Enter description"/>
+                            <br>
+                            <br>
+                            <input type="submit" value="Create"/>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="well" style="background: #B400BD;">
+                        <form method="post" action="activateCoupon">
+                            <h4 style="color: #ffffff">Activate coupon</h4>
+                            <div class="center">
+                                <input type="text" minlength="6" maxlength="6" name="code" placeholder="Enter code" style="width: 100%"/>
+                            </div>
+                            <br>
+                            <div class="center">
+                                <input type="submit" value="Activate" style="width: 100%"/>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
 
-            <div class="col-sm-9">
-                <div class="well" style="box-shadow: 5px 5px 15px grey;">
-                    <h4>Dashboard</h4>
-                    <p>This is a dashboard where you can create coupons and activate them</p>
+            <div class="row">
+                <div class="col-sm-2">
+                    <img style="border-radius: 8px;" width="130" src="{{image}}" alt="heart">
                 </div>
-                <div class="row">
-                    <div class="col-sm-3">
-                        <div class="well">
-                            <h4>Used</h4>
-                            {{used}}
-                        </div>
-                    </div>
-                    <div class="col-sm-3">
-                        <div class="well">
-                            <h4>Unused</h4>
-                            {{unused}}
-                        </div>
-                    </div>
-                    <div class="col-sm-3">
-                        <div class="well">
-                            <h4>Total</h4>
-                            {{total}}
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-6">
-                        <div class="well">
-                            <form method="post" action="createCoupon">
-                                <h4>Create coupon</h4>
-                                <input type="text" name="description" placeholder="Enter description"/>
-                                <br>
-                                <br>
-                                <input type="submit" value="Create"/>
-                            </form>
-                        </div>
-                    </div>
-                    <div class="col-sm-3">
-                        <div class="well" style="background: #B400BD;">
-                            <form method="post" action="activateCoupon">
-                                <h4 style="color: #ffffff">Activate coupon</h4>
-                                <div class="center">
-                                    <input type="text" minlength="6" maxlength="6" name="code" placeholder="Enter code" style="width: 100%"/>
-                                </div>
-                                <br>
-                                <div class="center">
-                                    <input type="submit" value="Activate" style="width: 100%"/>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-sm-2">
-                        <img style="border-radius: 8px;" width="130" src="{{image}}" alt="heart">
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="well">
-                            {{message}}
-                        </div>
+                <div class="col-sm-4">
+                    <div class="well">
+                        <p style="color: #B400BD">{{message}}</p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
 </body>
 </html>
