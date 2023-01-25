@@ -38,7 +38,10 @@ input {
   align-items: center;
 
 
-  </style>
+
+
+
+</style>
 </head>
 
 <body>
@@ -73,8 +76,27 @@ input {
                 <li class="active"><a style="background: #B400BD;" href="/dataBase">Coupons base</a></li>
             </ul><br>
         </div>
+
+        <div class="center">
+            <table width="100%">
+                <tr bgcolor="fac670">
+                    <th>id</th>
+                    <th>description</th>
+                    <th>relevant</th>
+                </tr>
+                {{#coupons}}
+                    <tr bgcolor="ffffff">
+                        <td><span>{{id}}</span></td>
+                        <td><span>{{description}}</span></td>
+                        <td><span>{{relevant}}</span></td>
+                    </tr>
+                {{/coupons}}
+            </table>
+        </div>
+
     </div>
 </div>
+
 
 
 </body>

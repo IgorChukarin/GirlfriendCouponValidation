@@ -20,6 +20,8 @@ public class CouponController {
 
     @GetMapping("/dataBase")
     public String couponsBase(Map<String, Object> model) {
+        Iterable<Coupon> coupons = couponRepository.findAll();
+        model.put("coupons", coupons);
         return "dataBase";
     }
 
@@ -27,14 +29,14 @@ public class CouponController {
     public String createCoupon(@RequestParam String description, Map<String, String> model) {
         if (description.equals("")) {
             displayStatistics(model);
-            model.put("message", "Описание не заполнено");
+            model.put("message", "Description is not filled in!");
             model.put("image", "https://sun9-north.userapi.com/sun9-79/s/v1/ig2/yixyRxbNXfdBvR7pU3d4Bj77f6hRJQXAozElXxk-EH4FCkFp3QC1u_BNSQVyExHmDPZFyyIcAtyIFGfoYRhJguLA.jpg?size=1170x1170&quality=95&type=album");
             return "main";
         }
         Coupon coupon = setCouponParameters(description);
         couponRepository.save(coupon);
         displayStatistics(model);
-        model.put("message", "Купон №" + coupon.getId() + " выписан!");
+        model.put("message", "Coupon №" + coupon.getId() + " has been created!");
         model.put("image", "https://sun9-west.userapi.com/sun9-4/s/v1/ig2/f06sZw_bu8N8zzjFADiIFpT5EOp9WRl63NJcgYYD9PtqWATFYUslqyJ3yE7RnZCosguIWshu5dhvVTWsW6QHPYdL.jpg?size=1170x1166&quality=96&type=album");
         try {
             CouponImageCreator.addTextInImage(String.valueOf(coupon.getId()), description);
@@ -72,7 +74,7 @@ public class CouponController {
     public String activateCoupon(@RequestParam String code, Map<String, String> model) {
         if (code.equals("") || code.length() != 6) {
             displayStatistics(model);
-            model.put("message", "Неверный формат кода");
+            model.put("message", "Invalid code format");
             model.put("image", "https://sun9-north.userapi.com/sun9-79/s/v1/ig2/yixyRxbNXfdBvR7pU3d4Bj77f6hRJQXAozElXxk-EH4FCkFp3QC1u_BNSQVyExHmDPZFyyIcAtyIFGfoYRhJguLA.jpg?size=1170x1170&quality=95&type=album");
             return "main";
         }
@@ -83,16 +85,16 @@ public class CouponController {
             if (coupon.isRelevant()) {
                 coupon.setRelevant(false);
                 couponRepository.save(coupon);
-                model.put("message", "Купон акивирован!");
+                model.put("message", "Coupon has been activated!");
                 model.put("image", "https://sun9-north.userapi.com/sun9-83/s/v1/ig2/XUOo9cBu9e-lJ6ZlxgLUw-ZaQDx8x0Kf2ckAyzztB_c7Ddv9elHFCtWEj3E7UaG3cyQ90EzvFs5WlvuLb4zQf0ej.jpg?size=1170x1170&quality=95&type=album");
 
             } else {
-                model.put("message", "Этот купон уже использован!");
+                model.put("message", "This coupon has already been used!");
                 model.put("image", "https://sun9-east.userapi.com/sun9-60/s/v1/ig2/FGiZXxtEIo959GAk4iSRwsG3rucCPYIeS3zEDVrSLPQBLzBjmLx2zhewoRFJfULsToAo4WWtPbLjlP9O9KdqMsa1.jpg?size=1170x1170&quality=95&type=album");
             }
         }
         else {
-            model.put("message", "*Купон не существует*");
+            model.put("message", "Coupon doesn't exist");
             model.put("image", "https://sun9-north.userapi.com/sun9-88/s/v1/ig2/ku6qWk6Pqt6XgX_OvbsTXt4c2KJ-T2JXLSJppE6Rb_gJfN2fKOCadmrQ1taVABtySvpMDLi5ejtwZBHDnz--s0jt.jpg?size=1170x1166&quality=95&type=album");
 
         }

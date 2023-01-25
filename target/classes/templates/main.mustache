@@ -8,6 +8,11 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <style>
+
+    ::placeholder {
+    color: #D8D8D8;
+    }
+
     /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
     .row.content {height: 610px}
 
@@ -23,14 +28,14 @@
     }
 
 input {
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    background-color: #ffffff;
+    border: 0px solid;
+    border-radius: 10px;
+    background-color: #222843;
 }
 
 .well {
     border: 0px;
-    border-radius: 8px;
+    border-radius: 10px;
     background-color: #2d325a;
 }
 
@@ -119,10 +124,10 @@ h4 {
                     <div class="well">
                         <form method="post" action="createCoupon">
                             <h4>Create coupon</h4>
-                            <input type="text" name="description" placeholder="Enter description"/>
+                            <input type="text" name="description" placeholder="Description..."/>
                             <br>
                             <br>
-                            <input type="submit" value="Create"/>
+                            <input type="submit" value="Create" style="background-color: #ffffff"/>
                         </form>
                     </div>
                 </div>
@@ -130,12 +135,12 @@ h4 {
                     <div class="well" style="background: #B400BD;">
                         <form method="post" action="activateCoupon">
                             <h4 style="color: #ffffff">Activate coupon</h4>
-                            <div class="center">
-                                <input type="text" minlength="6" maxlength="6" name="code" placeholder="Enter code" style="width: 100%"/>
+                            <div class="center" style="border: none; border-bottom: 2px solid #ffffff;">
+                                <input type="text" minlength="6" maxlength="6" name="code" placeholder="Code..." style="width: 100%; background: #B400BD; color: #ffffff"/>
                             </div>
                             <br>
                             <div class="center">
-                                <input type="submit" value="Activate" style="width: 100%"/>
+                                <input type="submit" value="Activate" style="width: 100%; background-color: #ffffff"/>
                             </div>
                         </form>
                     </div>
@@ -148,7 +153,7 @@ h4 {
                 </div>
                 <div class="col-sm-4">
                     <div class="well">
-                        <p style="color: #B400BD">{{message}}</p>
+                        <p style="color: #ffffff">{{message}}</p>
                     </div>
                 </div>
             </div>
