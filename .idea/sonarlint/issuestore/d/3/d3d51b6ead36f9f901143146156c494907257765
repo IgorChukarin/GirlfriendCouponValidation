@@ -1,9 +1,0 @@
-
-F
-java:S1481$"+Remove this unused "coupon" local variable.(£×óäøÿÿÿÿ
-E
-java:S1068"/Remove this unused "usedCoupons" private field.(°› ÷
-L
-java:S1068"1Remove this unused "unusedCoupons" private field.(µ»õéýÿÿÿÿ
-E
-java:S1068	"/Remove this unused "totalAmount" private field.(®Ú…Æ

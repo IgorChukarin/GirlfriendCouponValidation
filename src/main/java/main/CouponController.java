@@ -43,6 +43,7 @@ public class CouponController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        MailSender.sendCouponToEmail();
         return "main";
     }
 

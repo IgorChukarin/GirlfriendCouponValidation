@@ -1,27 +1,0 @@
-
-W
-java:S2184"BCast one of the operands of this division operation to a "double".(¼ÂôI
-W
-java:S2184"BCast one of the operands of this division operation to a "double".(¼ÂôI
-o	java:S115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(æÆ—í
-P
-java:S1118
-":Add a private constructor to hide the implicit public one.(¢Ê©õ
-[
-java:S1124"EReorder the modifiers to comply with the Java Language Specification.(˜žÌð
-W
-java:S1075"ARefactor your code to get this URI from a customizable parameter.(˜žÌð
-[
-java:S1124"EReorder the modifiers to comply with the Java Language Specification.(†Ùñ¾
-W
-java:S1075"ARefactor your code to get this URI from a customizable parameter.(†Ùñ¾
-`
-java:S1124"EReorder the modifiers to comply with the Java Language Specification.( Úð¡úÿÿÿÿ
-`
-java:S1124"EReorder the modifiers to comply with the Java Language Specification.(êèí–úÿÿÿÿ
-[
-java:S1124"EReorder the modifiers to comply with the Java Language Specification.(æÆ—í
-`
-java:S1854"CRemove this useless assignment to local variable "normalTransform".(¯Öí³8ïýõËÝ0
-Q
-java:S1481"4Remove this unused "normalTransform" local variable.(¯Öí³8òýõËÝ0

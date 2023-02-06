@@ -10,7 +10,7 @@
     <style>
 
     ::placeholder {
-    color: #D8D8D8;
+    color: #9F9F9F;
     }
 
     /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
@@ -28,6 +28,7 @@
     }
 
 input {
+padding-left: 5px;
     border: 0px solid;
     border-radius: 10px;
     background-color: #222843;
@@ -40,11 +41,11 @@ input {
 }
 
 p {
-  color: #ffffff;
+  color: white;
 }
 
 h2 {
-  color: #ffffff;
+  color: white;
 }
 
 h4 {
@@ -86,7 +87,7 @@ h4 {
 <div class="container-fluid" style="background-color: #222843">
     <div class="row content">
         <div class="col-sm-3 sidenav hidden-xs" style="background-color: #2f356a" >
-            <h2>Coupon.</h2>
+            <h2 style="color: white">Coupon.</h2>
             <ul class="nav nav-pills nav-stacked">
                 <li class="active"><a style="background: #B400BD;" href="/">Dashboard</a></li>
                 <li><a style="color: #B400BD;" href="/dataBase">Coupons base</a></li>
@@ -124,7 +125,7 @@ h4 {
                     <div class="well">
                         <form method="post" action="createCoupon">
                             <h4>Create coupon</h4>
-                            <input type="text" name="description" placeholder="Description..."/>
+                            <input style="color: #ffffff" type="text" minlength="1" maxlength="18" name="description" placeholder="Description..."/>
                             <br>
                             <br>
                             <input type="submit" value="Create" style="background-color: #ffffff"/>
@@ -148,9 +149,11 @@ h4 {
             </div>
 
             <div class="row">
-                <div class="col-sm-2">
-                    <img style="border-radius: 8px;" width="130" src="{{image}}" alt="heart">
-                </div>
+                <well>
+                    <div class="col-sm-2">
+                        <img style="border-radius: 10px;" width="130;" src="{{image}}" alt="heart">
+                    </div>
+                </well>
                 <div class="col-sm-4">
                     <div class="well">
                         <p style="color: #ffffff">{{message}}</p>

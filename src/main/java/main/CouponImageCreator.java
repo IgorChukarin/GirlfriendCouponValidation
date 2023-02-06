@@ -10,7 +10,8 @@ import java.io.IOException;
 public class CouponImageCreator {
     final static File blankCoupon = new File("C:\\Users\\Zigor\\Desktop\\projects\\GirlfriendCouponValidation\\src\\main\\images\\coupon.png");
     final static File finalCoupon = new File("C:\\Users\\Zigor\\Desktop\\projects\\GirlfriendCouponValidation\\src\\main\\images\\finalCoupon.png");
-    final static Color codeColor = new Color(238,85,100);
+    final static Color codeColor = new Color(238,84,214);
+    final static Color descriptionColor = new Color(218,67,196);
     final static Font codeFont = new Font(Font.SANS_SERIF, Font.BOLD, 60);
     final static String type = "png";
 
@@ -33,11 +34,24 @@ public class CouponImageCreator {
         graphics2D.transform(rotatedTransform);
         graphics2D.transform(rotatedTransform);
         graphics2D.transform(rotatedTransform);
-        graphics2D.setColor(Color.BLACK);
+        graphics2D.setColor(descriptionColor);
         graphics2D.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 30));
-        graphics2D.drawString(description, bufferedImage.getWidth() / 2 - 80, bufferedImage.getHeight() / 2);
+        graphics2D.drawString(description, bufferedImage.getWidth() / 2 - 89, bufferedImage.getHeight() / 2 - 13);
 
         ImageIO.write(bufferedImageWithType, type, finalCoupon);
         graphics2D.dispose();
     }
+
+    public static void main(String[] args) {
+        try {
+            CouponImageCreator.addTextInImage("000000", "Поездка на такси");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
 }
+
+
+
+

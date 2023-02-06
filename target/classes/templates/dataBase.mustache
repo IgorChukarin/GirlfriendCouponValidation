@@ -36,8 +36,43 @@ input {
   display: flex;
   justify-content: center;
   align-items: center;
+  }
 
+tr:first-child th:first-child { border-top-left-radius: 10px; }
+tr:first-child th:last-child { border-top-right-radius: 10px; }
+tr:last-child td:first-child { border-bottom-left-radius: 10px; }
+tr:last-child td:last-child { border-bottom-right-radius: 10px; }
 
+tr:nth-child(even) {
+  background-color: #323864;
+}
+
+span {
+  color: white;
+  font-size: 20px;
+}
+
+table {
+  margin-top: 40px;
+	border-collapse: collapse;
+	width: 70%;
+	margin-left: auto;
+    margin-right: auto;
+}
+
+th, td {
+  text-align: left;
+  padding: 8px;
+  font-family: Arial;
+}
+
+th {
+  text-align: left;
+  padding: 8px;
+  font-family: Arial;
+  font-size: 20px;
+  color: #b400bd;
+}
 
 
 
@@ -67,10 +102,10 @@ input {
     </div>
 </nav>
 
-<div class="container-fluid">
+<div class="container-fluid" style="background-color: #222843">
     <div class="row content">
-        <div class="col-sm-3 sidenav hidden-xs">
-            <h2>Coupon.</h2>
+        <div class="col-sm-3 sidenav hidden-xs" style="background-color: #2f356a">
+            <h2 style="color: white">Coupon.</h2>
             <ul class="nav nav-pills nav-stacked">
                 <li><a style="color: #B400BD;" href="/">Dashboard</a></li>
                 <li class="active"><a style="background: #B400BD;" href="/dataBase">Coupons base</a></li>
@@ -78,14 +113,14 @@ input {
         </div>
 
         <div class="center">
-            <table width="100%">
-                <tr bgcolor="fac670">
+            <table>
+                <tr bgcolor="#2d325a">
                     <th>id</th>
                     <th>description</th>
                     <th>relevant</th>
                 </tr>
                 {{#coupons}}
-                    <tr bgcolor="ffffff">
+                    <tr bgcolor="#2d325a">
                         <td><span>{{id}}</span></td>
                         <td><span>{{description}}</span></td>
                         <td><span>{{relevant}}</span></td>
@@ -93,11 +128,7 @@ input {
                 {{/coupons}}
             </table>
         </div>
-
     </div>
 </div>
-
-
-
 </body>
 </html>
